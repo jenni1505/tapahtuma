@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Kirjaudu</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Kirjaudu sisään</h1>
+
+<!-- Virheviesti, jos kirjautuminen epäonnistuu -->
+<p th:if="${error}" style="color: red;">Virhe: Käyttäjätunnus tai salasana on väärä.</p>
+
+<form th:action="@{/login}" method="post">
+  <label for="email">Sähköposti:</label>
+  <input type="email" id="email" name="email" required>
+  <br>
+  <label for="password">Salasana:</label>
+  <input type="password" id="password" name="password" required>
+  <br>
+  <button type="submit">Kirjaudu</button>
+</form>
+
+
+<!-- Rekisteröintilinkki -->
+<p>Ei tiliä? <a th:href="@{/register}">Rekisteröidy tästä</a></p>
+</body>
+</html>

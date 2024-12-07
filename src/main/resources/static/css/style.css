@@ -1,11 +1,27 @@
 /* Yleiset värit ja fontit */
 body {
-    background-color: #f3f0ee; /* Taustaväri */
+    display: flex;
+    flex-direction: column; /* Järjestää elementit pystysuunnassa */
+    align-items: center; /* Keskittää sisältö vaakasuunnassa */
+    justify-content: flex-start; /* Aloittaa sisällön yläreunasta */
+    min-height: 100vh; /* Varmistaa, että sivu täyttää koko korkeuden */
+    margin: 20px;
     font-family: Arial, sans-serif;
-    color: #2c6b96; /* Tekstin väri */
+    background-color: #f3f0ee;
+    color: #2c6b96;
+}
+
+main {
+    display: flex;
+    flex-direction: column; /* Järjestää sisällön pystysuunnassa */
+    align-items: center; /* Keskittää sisällön keskelle */
+    max-width: 800px; /* Rajoittaa sisällön leveyttä */
+    width: 100%; /* Skaalaa koko ikkunan leveydelle pienillä näytöillä */
+    margin: 20px auto; /* Lisää pystysuuntaista tasapainoa */
 }
 
 h1, h2, h3 {
+    text-align: center; /* Otsikot keskitetään */
     color: #2c6b96; /* Otsikoiden väri */
 }
 
@@ -18,73 +34,122 @@ a:hover {
     color: #ce9e5b; /* Linkin hover-efekti */
 }
 
+form {
+    display: inline-block; /* Lomakkeet rivinsisäisesti */
+    margin: 0; /* Poistetaan marginaalit */
+}
+
 button {
-    background-color: #2c6b96; /* Painikkeen taustaväri */
+    background-color: #2c6b96; /* Taustaväri */
+    color: white; /* Tekstin väri */
+    border: none; /* Poistetaan reunukset */
+    border-radius: 5px; /* Pyöristetyt kulmat */
+    padding: 5px 10px; /* Pienempi painike */
+    font-size: 0.9rem; /* Pienempi fontti */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ce9e5b; /* Hover-väri */
+    color: white; /* Tekstin väri */
+}
+
+ul li {
+    margin-bottom: 15px; /* Lisää väliä listan alkioiden välille */
+    list-style: none; /* Poistetaan luettelomerkit */
+}
+
+ul li span {
+    font-size: 1rem; /* Selkeä fonttikoko */
+    color: #333; /* Tummanharmaa väri */
+}
+
+/* Navigointipalkki */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Väliä linkkien välille */
+    margin-top: 20px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2c6b96;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    color: white;
+    background-color: #ce9e5b;
+
+}
+
+/* Kalenterin tyyli */
+#calendar {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 400px; /* Rajoittaa kalenterin leveyttä */
+    margin: 0 auto; /* Keskittää kalenterin */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #2c6b96; /* Päiväotsikoiden väri */
+    color: white;
+}
+
+td {
+    height: 50px;
+    cursor: pointer;
+}
+
+td:hover {
+    background-color: #f0f0f0; /* Hover-efekti kalenteripäiville */
+}
+
+.empty {
+    background-color: #f9f9f9;
+    pointer-events: none;
+}
+
+.today {
+    background-color: #ce9e5b; /* Korostaa nykyisen päivän */
+    color: white;
+}
+
+.controls {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Väli painikkeiden välille */
+}
+
+.controls button {
+    background-color: #2c6b96;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Sujuva siirtymä hover-efektiin */
+    border-radius: 5px;
 }
 
-button:hover {
-    background-color: #ce9e5b; /* Hover-efekti painikkeelle */
-}
-
-/* Navigointipalkki */
-.sidebar {
-    width: 200px;
-    background-color: #2c6b96; /* Tumma tausta */
-    color: white; /* Teksti valkoinen */
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar ul {
-    list-style: none;
-    padding: 0;
-}
-
-.sidebar li {
-    margin: 15px 0;
-}
-
-.sidebar a {
-    color: white; /* Linkit valkoisina */
-    text-decoration: none;
-}
-
-.sidebar a:hover {
-    text-decoration: underline; /* Korostus hoverilla */
-}
-
-/* Sisältöalue */
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #f3f0ee; /* Sama taustaväri kuin yleisessä taustassa */
-    color: #2c6b96; /* Tekstin väri */
-}
-
-/* Taulukot */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #b5dcdd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #2c6b96; /* Tumma otsikkorivin väri */
-    color: white; /* Teksti valkoisena */
-}
-
-td {
-    background-color: #b5dcdd; /* Vaalea solujen väri */
+.controls button:hover {
+    background-color: #ce9e5b;
 }
 
 /* Responsiivisuus: Varmistetaan skaalautuvuus pienemmillä näytöillä */
@@ -96,5 +161,33 @@ td {
 
     .content {
         padding: 10px;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    #calendar {
+        border: 1px solid #ddd;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 2rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin: 0.5rem 0;
+    }
+
+    strong {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        display: block;
     }
 }

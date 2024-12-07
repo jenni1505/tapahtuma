@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lisää Tapahtuma</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1>Lisää Tapahtuma</h1>
+<form th:action="@{/events/add-form}" th:object="${event}" method="post">
+    <input type="text" th:field="*{name}" placeholder="Tapahtuman nimi" required />
+    <input type="date" th:field="*{date}" required />
+    <button type="submit">Lisää tapahtuma</button>
+
+    <label for="teamEvent">Joukkuetapahtuma:</label>
+    <input type="checkbox" id="teamEvent" th:field="*{teamEvent}" />
+    <p>Joukkuetapahtumana tallennettaessa, se näkyy kaikille käyttäjille.</p>
+    <br />
+
+    <button type="submit">Lisää</button>
+</form>
+<a th:href="@{/events}">Palaa tapahtumiin</a>
+
+<a th:href="@{/index}">Takaisin etusivulle</a>
+<a href="/logout">Logout</a>
+</body>
+</html>

@@ -1,28 +1,43 @@
 package org.example.tapahtuma.models;
-import lombok.AllArgsConstructor;
+
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Event {
-    // Tietokantataulun sarake
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nimi;
-    private String paivamaara;
+
+    @Column(nullable = false)
+    private String name; // Name of the event
+
+    @Column(nullable = false)
+    private LocalDate date; // Event date
 
     @ManyToOne
-    @JoinColumn(name = "creator_id") // Luo viiteavain käyttäjän ID:hen
-    private User creator;
+    @JoinColumn(name = "creator_id", nullable = true) // Nullable for team events
+    private User creator; // Creator of the event
 
-    // Getterit, setterit ja konstruktori
-    public Event(String nimi, String paivamaara) {
-        this.nimi = nimi;
-        this.paivamaara = paivamaara;
+    @Column(nullable = false)
+    private boolean teamEvent; // True = team event, False = personal event
+
+    // Avoid recursive references in toString
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", teamEvent=" + teamEvent +
+                '}';
     }
 }

@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Rekisteröityminen</title>
+    <!-- Viitataan CSS-tiedostoon -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -33,6 +34,7 @@
 
 <p th:if="${error}" style="color: red;">Virhe: <span th:text="${error}"></span></p>
 
+<!--JS -->
 <script>
     const form = document.querySelector("form");
     const button = document.querySelector("#submitButton");
@@ -40,5 +42,6 @@
         button.disabled = !form.checkValidity();
     });
 </script>
+
 </body>
 </html>

@@ -28,34 +28,38 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers( "/css/**", "/register", "/h2-console/**").permitAll() // Salli pääsy julkisille sivuille
-                        .anyRequest().authenticated() // Suojaa muut URL-polut
-                )
+                        // Salli pääsy julkisille resursseille
+                        .requestMatchers("/css/**", "/js/**", "/register", "/h2-console/**").permitAll()
 
+                        // REST API -reitit, kuten tapahtumien haku ja käsittely
+                        .requestMatchers("/api/events/**").authenticated()
+
+                        // Lomakepohjaiset reitit tapahtumien lisäykseen ja hallintaan
+                        .requestMatchers("/events/**").authenticated()
+
+                        // Kaikki muut reitit vaativat kirjautumisen
+                        .anyRequest().authenticated()
+                )
                 .csrf(csrf -> csrf
-                    .ignoringRequestMatchers("/h2-console/**")// Poista CSRF vain H2-konsolilta
+                        // Poista CSRF-suojaus H2-konsolilta ja REST API -reiteiltä
+                        .ignoringRequestMatchers("/h2-console/**", "/api/events/**")
                 )
-
                 .headers(headers -> headers
-                    .frameOptions(frameOptions -> frameOptions
-                        .disable() // Poista X-Frame-Options, jotta H2-konsoli toimii
-                    )
+                        // Salli H2-konsolin käyttö
+                        .frameOptions(frameOptions -> frameOptions.disable())
                 )
-
                 .formLogin(form -> form
-                        .loginPage("/login") // Osoite, jossa kirjautumissivu sijaitsee
-                        .usernameParameter("email") // Määritä, että kirjautumisessa käytetään 'email'-kenttää
-                        .passwordParameter("password") // Määritä, että kirjautumisessa käytetään 'password'-kenttää
-                        .defaultSuccessUrl("/index", true) // Uudelleenohjaus kirjautumisen jälkeen
+                        .loginPage("/login") // Kirjautumissivun osoite
+                        .usernameParameter("email") // Käyttäjätunnuksena käytetään sähköpostia
+                        .passwordParameter("password") // Salasana-kenttä
+                        .defaultSuccessUrl("/events", true) // Uudelleenohjaus kirjautumisen jälkeen
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/logout") // Logout-polku
-                        .logoutSuccessUrl("/login?logout") // Uudelleenohjaus kirjautumissivulle
+                        .logoutUrl("/logout") // Kirjautumisesta ulos kirjautumisen polku
+                        .logoutSuccessUrl("/login") // Uudelleenohjaus kirjautumissivulle
                         .permitAll()
                 );
-
-
 
         return http.build();
     }

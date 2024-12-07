@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data // Luo automaattisesti getterit, setterit, toString, equals, ja hashCode
@@ -20,10 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    private String name;
     private String email;
     private String password;
 
+    @ToString.Exclude
     // Viittaus tapahtumiin, joissa käyttäjä on luoja
     @OneToMany(mappedBy = "creator", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> events = new ArrayList<>();
@@ -31,8 +33,18 @@ public class User {
 
     // Kolmen parametrin konstruktori
     public User(String username, String email, String password) {
-            this.username = username;
+            this.name = username;
             this.email = email;
             this.password = password;
         }
+
+       // Vältä rekursiivisia viittauksia toStringissä
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
     }

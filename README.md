@@ -1,10 +1,10 @@
-Kalenterisovellus
-Käyttäjät voivat lisätä, muokata ja poistaa sekä tarkastella henkilökohtaisia tapahtumia. Käyttäjän itse luomia joukkuekohtaisia tapahtumia voi lisätä ja muokata sekä poistaakin, 
+Kalenterisovellus, jossa
+käyttäjät voivat lisätä, muokata ja poistaa sekä tarkastella henkilökohtaisia tapahtumia. Käyttäjän itse luomia joukkuekohtaisia tapahtumia voi lisätä ja muokata sekä poistaakin, 
 mutta muiden lisäämiä joukkueen yhteisiä tapatumia käyttäjä ei pääse muokkaamaan/poistamaan. Joukkueen ja käyttäjän omat tapahtumat voidaan nähdä yhteisesti kalenterinäkymästä.
 Sovelluksessa on mukana kirjautumis- ja rekisteröitymisominaisuudet sekä käyttäjän autentikointi. 
 Sovellus on suunniteltu tarjoamaan mahdollisimman intuitiivinen käyttökokemus.
 
-Käytetyt teknologiat
+Käytetyt teknologiat:
 IntelliJ IDEA: Kehitysympäristö, jossa projektin koodi on kirjoitettu, testattu ja debugattu.
 Spring Boot: Backend-kehys, joka tarjoaa REST API -rajapinnat ja sovelluksen liiketoimintalogiikan.
 Maven: Projektin riippuvuuksien hallintaan.
@@ -17,7 +17,6 @@ CSS: Käyttöliittymän ulkoasun ja responsiivisuuden suunnitteluun.
 Fetch API: Käytetty selaimessa tiedon hakemiseen ja päivittämiseen backendistä.
 
 Käyttäjähallinta:
-
 Rekisteröityminen ja kirjautuminen Spring Securityn avulla.
 Salasanat tallennetaan suojatusti.
 Eri käyttäjät voivat nähdä omat henkilökohtaiset tapahtumansa.

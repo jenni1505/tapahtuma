@@ -75,7 +75,7 @@ nav {
 
 nav a {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px;
     background-color: #2c6b96;
     color: white;
     text-decoration: none;
@@ -113,9 +113,25 @@ th {
     color: white;
 }
 
+/* Kalenterisolujen korkeuden ja leveyden säätö */
 td {
-    height: 50px;
+    height: 100px; /* Kasvata solujen korkeutta */
+    width: 200px; /* Lisää solujen leveyttä, jos tarpeen */
     cursor: pointer;
+    vertical-align: top; /* Varmistaa, että tekstit alkavat ylhäältä */
+    position: relative;
+}
+
+/* Taulukon rivien korkeuden määrittely */
+tr {
+    height: auto; /* Anna rivien mukautua sisällön korkeuteen */
+}
+
+/* Event-merkinnät pysyvät ruudussa */
+.event-marker {
+    font-size: 0.9rem; /* Pienennä fonttia hieman, jos tarvitaan */
+    text-align: left; /* Aseta merkinnät vasemmalle */
+    margin-top: 5px; /* Lisää hieman tilaa päivämäärän ja merkinnän väliin */
 }
 
 td:hover {
@@ -128,8 +144,8 @@ td:hover {
 }
 
 .today {
-    background-color: #ce9e5b; /* Korostaa nykyisen päivän */
-    color: white;
+    background-color: #b5c2d5; /* Korostaa nykyisen päivän */
+    color: blue;
 }
 
 .controls {
@@ -151,6 +167,18 @@ td:hover {
 .controls button:hover {
     background-color: #ce9e5b;
 }
+
+.event-day {
+    background-color: #ce9e5b;
+    position: relative;
+}
+
+.no-event-day {
+
+    background-color: #f8f9fa;
+}
+
+
 
 /* Responsiivisuus: Varmistetaan skaalautuvuus pienemmillä näytöillä */
 @media (max-width: 768px) {

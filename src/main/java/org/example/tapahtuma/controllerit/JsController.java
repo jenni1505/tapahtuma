@@ -20,7 +20,6 @@ public class JsController {
     @GetMapping("/main.js")
     public ResponseEntity<String> serveJavaScript() throws IOException {
         // Lue tiedosto resurssikansiosta
-        // Lue tiedosto resurssikansiosta
 
         String jsContent;
         Resource resource = new ClassPathResource("static/js/main.js");

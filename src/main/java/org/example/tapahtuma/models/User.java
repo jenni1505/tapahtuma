@@ -32,8 +32,8 @@ public class User {
 
 
     // Kolmen parametrin konstruktori
-    public User(String username, String email, String password) {
-            this.name = username;
+    public User(String name, String email, String password) {
+            this.name = name;
             this.email = email;
             this.password = password;
         }
@@ -43,7 +43,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

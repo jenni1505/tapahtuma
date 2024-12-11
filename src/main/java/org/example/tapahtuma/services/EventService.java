@@ -10,6 +10,8 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,6 +50,27 @@ public class EventService {
         return eventRepository.findByTeamEventTrue()
                 .stream()
                 .map(eventMapper::toDTO) // Käytä EventMapperia
+                .collect(Collectors.toList());
+    }
+
+    public List<EventDTO> getUserEventsSorted(String userMail) {
+        User user = userService.findUserByEmail(userMail);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        return eventRepository.findByCreator(user)
+                .stream()
+                .map(eventMapper::toDTO) // Muunna entiteetit DTO:iksi
+                .sorted(Comparator.comparing(event -> LocalDate.parse(event.getDate(), formatter))) // Järjestä päivämäärän mukaan
+                .collect(Collectors.toList());
+    }
+
+    public List<EventDTO> getTeamEventsSorted() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        return eventRepository.findByTeamEventTrue()
+                .stream()
+                .map(eventMapper::toDTO) // Muunna entiteetit DTO:iksi
+                .sorted(Comparator.comparing(event -> LocalDate.parse(event.getDate(), formatter))) // Järjestä päivämäärän mukaan
                 .collect(Collectors.toList());
     }
 

@@ -17,7 +17,6 @@ public class EventDTO {
     private boolean teamEvent; // Onko joukkutapahtuma
     private String creatorEmail;  // Tapahtuman luojan sähköposti
 
-
 }
 
 

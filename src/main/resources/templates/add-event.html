@@ -9,7 +9,7 @@
 <form th:action="@{/events/add-form}" th:object="${event}" method="post">
     <input type="text" th:field="*{name}" placeholder="Tapahtuman nimi" required />
     <input type="date" th:field="*{date}" required />
-    <button type="submit">Lisää tapahtuma</button>
+
 
     <label for="teamEvent">Joukkuetapahtuma:</label>
     <input type="checkbox" id="teamEvent" th:field="*{teamEvent}" />
@@ -18,9 +18,14 @@
 
     <button type="submit">Lisää</button>
 </form>
-<a th:href="@{/events}">Palaa tapahtumiin</a>
 
-<a th:href="@{/index}">Takaisin etusivulle</a>
-<a href="/logout">Logout</a>
+<!-- Navigaatio -->
+<nav>
+    <a th:href="@{/events}" style="display: inline-block; margin-top: 10px;">Palaa tapahtumiin</a>
+    <a th:href="@{/calendar}" style="display: inline-block; margin-top: 10px;">Näytä kalenteri</a>
+    <a th:href="@{/logout}" style="display: inline-block; margin-top: 10px;">Logout</a>
+
+</nav>
+
 </body>
 </html>

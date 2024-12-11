@@ -49,10 +49,10 @@ public class HomeController {
         return "login"; // Ohjaa takaisin kirjautumissivulle
     }
 
-
     @GetMapping("/calendar")
-        public String showCalendarPage() {
-            return "calendar"; // Palauttaa templates/calendar.html
-        }
+    public String showCalendarPage() {
+        return "calendar"; // Palauttaa kalenterinäkymän
     }
+}
+
 

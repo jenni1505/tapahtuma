@@ -45,5 +45,5 @@ Sovellus on suunniteltu toimimaan sekä tietokoneella että mobiililaitteilla.
 ![image](https://github.com/user-attachments/assets/474f724b-df2d-485b-a7b5-d8bc6d62fd5b)
 ![image](https://github.com/user-attachments/assets/275a7909-882d-49e4-ba2e-ea7286f3d77c)
 ![image](https://github.com/user-attachments/assets/221f7fe4-032e-4856-9913-2ab44f6efe8c)
-
+Aloitussivuna: localhost:8080/login
 
